@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+ xmlns:local="clr-namespace:StudentPerformance" xmlns:core="clr-namespace:StudentPerformance.Core"
+ x:Class="StudentPerformance.MainPage" x:DataType="local:PerformanceViewModel"
+ BackgroundColor="{StaticResource Background}" Title="Student-Performance">
+ <Grid Padding="28,24" RowDefinitions="Auto,Auto,*,Auto" RowSpacing="20" ColumnDefinitions="280,*" ColumnSpacing="24">
+  <Grid Grid.ColumnSpan="2" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" RowSpacing="6">
+   <Label Text="Student-Performance" FontSize="30" FontAttributes="Bold"/>
+   <Label Grid.Row="1" Text="Успішність студентів · Лабораторна №2 · Варіант 6" TextColor="{StaticResource Muted}"/>
+   <HorizontalStackLayout Grid.Column="1" Grid.RowSpan="2" Spacing="10" VerticalOptions="Center">
+    <Button Text="Відкрити XML" Command="{Binding OpenCommand}"/>
+    <Button Text="Зберегти XML" Command="{Binding SaveCommand}"/>
+    <Button Text="Експорт HTML" Command="{Binding ExportCommand}"/>
+   </HorizontalStackLayout>
+  </Grid>
+  <Border Grid.Row="1" Grid.RowSpan="2" BackgroundColor="{StaticResource Surface}" Stroke="#303C50" StrokeShape="RoundRectangle 12" Padding="18">
+   <ScrollView><VerticalStackLayout Spacing="3">
+    <Label Text="Параметри пошуку" FontSize="19" FontAttributes="Bold" Margin="0,0,0,8"/>
+    <Label Text="Спосіб аналізу" Style="{StaticResource FieldLabel}"/>
+    <Picker ItemsSource="{Binding Strategies}" ItemDisplayBinding="{Binding Name, x:DataType=core:IXmlAnalysisStrategy}" SelectedItem="{Binding SelectedStrategy}"/>
+    <Label Text="Ключові слова" Style="{StaticResource FieldLabel}"/>
+    <Entry Text="{Binding Keywords}" Placeholder="Наприклад: Шевченко ООП"/>
+    <Label Text="Факультет" Style="{StaticResource FieldLabel}"/><Entry Text="{Binding Faculty}" Placeholder="Усі факультети"/>
+    <Label Text="Кафедра" Style="{StaticResource FieldLabel}"/><Entry Text="{Binding Department}" Placeholder="Усі кафедри"/>
+    <Label Text="Група" Style="{StaticResource FieldLabel}"/><Entry Text="{Binding Group}" Placeholder="Наприклад: К-21"/>
+    <Label Text="Дисципліна" Style="{StaticResource FieldLabel}"/><Entry Text="{Binding Discipline}" Placeholder="Усі дисципліни"/>
+    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8" RowDefinitions="Auto,Auto">
+     <Label Text="Семестр" Style="{StaticResource FieldLabel}"/><Label Grid.Column="1" Text="Бал від" Style="{StaticResource FieldLabel}"/><Label Grid.Column="2" Text="Бал до" Style="{StaticResource FieldLabel}"/>
+     <Entry Grid.Row="1" Text="{Binding Semester}" Placeholder="1–12" Keyboard="Numeric"/>
+     <Entry Grid.Row="1" Grid.Column="1" Text="{Binding MinScore}" Placeholder="0" Keyboard="Numeric"/>
+     <Entry Grid.Row="1" Grid.Column="2" Text="{Binding MaxScore}" Placeholder="100" Keyboard="Numeric"/>
+    </Grid>
+    <Button Text="Знайти" Command="{Binding SearchCommand}" BackgroundColor="#9DB8FF" TextColor="#101B33" FontAttributes="Bold" Margin="0,16,0,5"/>
+    <Button Text="Скинути фільтри" Command="{Binding ResetCommand}"/>
+    <Label Text="Усі умови поєднуються. Порожнє поле не обмежує пошук." TextColor="{StaticResource Muted}" FontSize="12" Margin="0,12,0,0"/>
+   </VerticalStackLayout></ScrollView>
+  </Border>
+  <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" RowSpacing="4">
+   <Label Text="Результати аналізу" FontSize="22" FontAttributes="Bold"/>
+   <Label Grid.Row="1" Text="{Binding ResultCount}" TextColor="{StaticResource Accent}"/>
+   <HorizontalStackLayout Grid.Column="1" Grid.RowSpan="2" Spacing="10" VerticalOptions="Center">
+    <Label Text="Середній бал" TextColor="{StaticResource Muted}" VerticalOptions="Center"/>
+    <Label Text="{Binding Average}" FontSize="28" FontAttributes="Bold" TextColor="{StaticResource Accent}"/>
+   </HorizontalStackLayout>
+  </Grid>
+  <Grid Grid.Row="2" Grid.Column="1" RowDefinitions="Auto,Auto,*" RowSpacing="10">
+   <Label Text="{Binding Source}" FontSize="11" TextColor="{StaticResource Muted}" LineBreakMode="MiddleTruncation"/>
+   <Label Grid.Row="1" Text="{Binding Error}" IsVisible="{Binding HasError}" TextColor="#FFB4A9"/>
+   <CollectionView Grid.Row="2" ItemsSource="{Binding Rows}" SelectionMode="None">
+    <CollectionView.EmptyView><Label Text="Записів не знайдено. Змініть умови пошуку." TextColor="{StaticResource Muted}" Margin="12,30"/></CollectionView.EmptyView>
+    <CollectionView.ItemTemplate><DataTemplate x:DataType="core:GradeRecord">
+     <Border BackgroundColor="{StaticResource Surface}" Stroke="#303C50" StrokeShape="RoundRectangle 10" Padding="16,13" Margin="0,0,0,9">
+      <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto" RowSpacing="5" ColumnSpacing="16">
+       <Label Text="{Binding FullName}" FontSize="17" FontAttributes="Bold"/>
+       <HorizontalStackLayout Grid.Column="1" Grid.RowSpan="2" Spacing="8" VerticalOptions="Center">
+        <Label Text="{Binding Score}" FontSize="26" FontAttributes="Bold" TextColor="{StaticResource Accent}"/>
+        <Label Text="{Binding Ects}" FontSize="16" TextColor="{StaticResource Muted}" VerticalOptions="Center"/>
+       </HorizontalStackLayout>
+       <HorizontalStackLayout Grid.Row="1" Spacing="12"><Label Text="{Binding Discipline}" TextColor="{StaticResource Accent}"/><Label Text="{Binding Group}" TextColor="{StaticResource Muted}"/><Label Text="{Binding Semester, StringFormat='Семестр {0}'}" TextColor="{StaticResource Muted}"/></HorizontalStackLayout>
+       <Label Grid.Row="2" Grid.ColumnSpan="2" TextColor="{StaticResource Muted}" FontSize="12"><Label.FormattedText><FormattedString><Span Text="{Binding Faculty}"/><Span Text=" · "/><Span Text="{Binding Department}"/></FormattedString></Label.FormattedText></Label>
+      </Grid>
+     </Border>
+    </DataTemplate></CollectionView.ItemTemplate>
+   </CollectionView>
+  </Grid>
+  <Grid Grid.Row="3" Grid.ColumnSpan="2" ColumnDefinitions="Auto,*" ColumnSpacing="12">
+   <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="{StaticResource Accent}" HeightRequest="18" WidthRequest="18"/>
+   <Label Grid.Column="1" Text="{Binding Status}" TextColor="{StaticResource Muted}" FontSize="12" LineBreakMode="MiddleTruncation"/>
+  </Grid>
+ </Grid>
+</ContentPage>

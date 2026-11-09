@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<performance>
+
+  <record id="r01">
+
+    <FullName>Шевченко Олена Іванівна</FullName>
+
+    <Faculty>Кібернетики</Faculty>
+
+    <Department>Програмних систем</Department>
+
+    <Group>К-21</Group>
+
+    <Discipline>ООП</Discipline>
+
+    <Semester>3</Semester>
+
+    <Score>95</Score>
+
+  </record>
+
+  <record id="r02">
+
+    <FullName>Шевченко Олена Іванівна</FullName>
+
+    <Faculty>Кібернетики</Faculty>
+
+    <Department>Програмних систем</Department>
+
+    <Group>К-21</Group>
+
+    <Discipline>Бази даних</Discipline>
+
+    <Semester>3</Semester>
+
+    <Score>88</Score>
+
+  </record>
+
+  <record id="r03">
+
+    <FullName>Бондар Андрій Петрович</FullName>
+
+    <Faculty>Кібернетики</Faculty>
+
+    <Department>Програмних систем</Department>
+
+    <Group>К-21</Group>
+
+    <Discipline>ООП</Discipline>
+
+    <Semester>3</Semester>
+
+    <Score>60</Score>
+
+  </record>
+
+  <record id="r04">
+
+    <FullName>Бондар Андрій Петрович</FullName>
+
+    <Faculty>Кібернетики</Faculty>
+
+    <Department>Програмних систем</Department>
+
+    <Group>К-21</Group>
+
+    <Discipline>Бази даних</Discipline>
+
+    <Semester>3</Semester>
+
+    <Score>75</Score>
+
+  </record>
+
+  <record id="r05">
+
+    <FullName>Коваль Марія Олегівна</FullName>
+
+    <Faculty>Кібернетики</Faculty>
+
+    <Department>Інформаційних систем</Department>
+
+    <Group>К-22</Group>
+
+    <Discipline>ООП</Discipline>
+
+    <Semester>3</Semester>
+
+    <Score>82</Score>
+
+  </record>
+
+  <record id="r06">
+
+    <FullName>Коваль Марія Олегівна</FullName>
+
+    <Faculty>Кібернетики</Faculty>
+
+    <Department>Інформаційних систем</Department>
+
+    <Group>К-22</Group>
+
+    <Discipline>Бази даних</Discipline>
+
+    <Semester>3</Semester>
+
+    <Score>90</Score>
+
+  </record>
+
+  <record id="r07">
+
+    <FullName>Мельник Іван Сергійович</FullName>
+
+    <Faculty>Фізико-математичний</Faculty>
+
+    <Department>Прикладної математики</Department>
+
+    <Group>М-21</Group>
+
+    <Discipline>ООП</Discipline>
+
+    <Semester>3</Semester>
+
+    <Score>59</Score>
+
+  </record>
+
+  <record id="r08">
+
+    <FullName>Мельник Іван Сергійович</FullName>
+
+    <Faculty>Фізико-математичний</Faculty>
+
+    <Department>Прикладної математики</Department>
+
+    <Group>М-21</Group>
+
+    <Discipline>Бази даних</Discipline>
+
+    <Semester>3</Semester>
+
+    <Score>64</Score>
+
+  </record>
+
+  <record id="r09">
+
+    <FullName>Ткаченко Софія Андріївна</FullName>
+
+    <Faculty>Кібернетики</Faculty>
+
+    <Department>Інформаційних систем</Department>
+
+    <Group>К-22</Group>
+
+    <Discipline>ООП</Discipline>
+
+    <Semester>3</Semester>
+
+    <Score>100</Score>
+
+  </record>
+
+  <record id="r10">
+
+    <FullName>Ткаченко Софія Андріївна</FullName>
+
+    <Faculty>Кібернетики</Faculty>
+
+    <Department>Інформаційних систем</Department>
+
+    <Group>К-22</Group>
+
+    <Discipline>Бази даних</Discipline>
+
+    <Semester>3</Semester>
+
+    <Score>34</Score>
+
+  </record>
+
+  <record id="r11">
+
+    <FullName>Лук'яненко Максим Олексійович</FullName>
+
+    <Faculty>Фізико-математичний</Faculty>
+
+    <Department>Прикладної математики</Department>
+
+    <Group>М-21</Group>
+
+    <Discipline>ООП</Discipline>
+
+    <Semester>3</Semester>
+
+    <Score>81</Score>
+
+  </record>
+
+  <record id="r12">
+
+    <FullName>Лук'яненко Максим Олексійович</FullName>
+
+    <Faculty>Фізико-математичний</Faculty>
+
+    <Department>Прикладної математики</Department>
+
+    <Group>М-21</Group>
+
+    <Discipline>Бази даних</Discipline>
+
+    <Semester>3</Semester>
+
+    <Score>35</Score>
+
+  </record>
+
+</performance>
