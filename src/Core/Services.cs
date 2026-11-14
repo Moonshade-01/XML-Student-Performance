@@ -13,7 +13,8 @@ public sealed class XmlFileStore
             new XElement("performance", rows.Select(r => new XElement("record", new XAttribute("id", r.Id),
                 new XElement("FullName", r.FullName), new XElement("Faculty", r.Faculty),
                 new XElement("Department", r.Department), new XElement("Group", r.Group),
-                new XElement("Discipline", r.Discipline), new XElement("Semester", r.Semester), new XElement("Score", r.Score)))));
+                new XElement("Discipline", r.Discipline), new XElement("Teacher", r.Teacher),
+                new XElement("Semester", r.Semester), new XElement("Score", r.Score)))));
         document.Save(path);
     }
 }

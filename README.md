@@ -21,18 +21,19 @@ Alternatively, install the .NET MAUI development workload through Visual Studio 
 
 ## Run
 
-Open `Student-Performance.csproj` in Visual Studio with .NET 10 / MAUI support and select the Windows target, or run these commands from the project directory:
+Open `Student-Performance.sln` in Visual Studio with .NET 10 / MAUI support and select the Windows target, or run these commands from the project directory:
 
 ```powershell
 dotnet restore Student-Performance.csproj
 dotnet build Student-Performance.csproj -t:Run
 ```
 
-The application starts with an empty result list. Click **Відкрити XML** to load your own XML document. No sample student data is included. The HTML stylesheet is embedded in the application.
+The application starts with an empty result list. Click **Відкрити XML** to load your own XML document. An extended fictional dataset is available in `Examples/Student-Performance.xml`; open it manually to explore the application. The HTML stylesheet is embedded in the application.
 
 ## Project structure
 
 - `Student-Performance.csproj`: the MAUI project.
+- `Examples/Student-Performance.xml`: 96 grade records, 32 students, 8 groups, 3 faculties, 4 departments, 12 disciplines and 12 teachers. All personal data is fictional.
 - `src/Core/`: models, query construction, XML strategies and services.
 - `src/Platforms/Windows/`: Windows startup, manifest and file dialogs.
 - `src/Resources/Student-Performance.xsl`: embedded HTML transformation stylesheet.
@@ -40,7 +41,7 @@ The application starts with an empty result list. Click **Відкрити XML**
 
 ## XML format
 
-Use a `performance` root without a namespace and direct `record` children with unique `id` attributes. Each record requires nonempty `FullName`, `Faculty`, `Department`, `Group`, `Discipline`, `Semester` and `Score` elements. One record describes one student's result in one discipline. Scores must be 0–100 and semesters 1–12.
+Use a `performance` root without a namespace and direct `record` children with unique `id` attributes. Each record requires nonempty `FullName`, `Faculty`, `Department`, `Group`, `Discipline`, `Semester` and `Score` elements. One record describes one student's result in one discipline. Scores must be 0–100 and semesters 1–12. The optional `Teacher` element specifies the teacher; older files without it remain supported. Teacher names are included in keyword search, displayed in the results, and preserved in XML and HTML exports.
 
 ## Features
 
@@ -57,7 +58,7 @@ The streaming implementation is labelled SAX to follow the supplied laboratory m
 
 The interface is in Ukrainian.
 
-1. Use **Відкрити XML** to open your XML file using the format described above.
+1. Use **Відкрити XML** to open `Examples/Student-Performance.xml` or your own XML file using the format above.
 2. Select an analysis strategy and enter any combination of filters.
 3. Click **Знайти** to apply the query. Empty fields do not restrict the results. All active conditions are combined with AND. Text matching ignores case; each keyword must occur in a text field of the record.
 4. Use **Скинути фільтри** to display all records again. The filter panel can be scrolled on smaller windows.

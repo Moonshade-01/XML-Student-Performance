@@ -1,0 +1,963 @@
+<?xml version='1.0' encoding='utf-8'?>
+<performance>
+  <record id="r001">
+    <FullName>Шевченко Олена Іванівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-21</Group>
+    <Discipline>ООП</Discipline>
+    <Teacher>Петренко Олександр Іванович</Teacher>
+    <Semester>3</Semester>
+    <Score>0</Score>
+  </record>
+  <record id="r002">
+    <FullName>Шевченко Олена Іванівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-21</Group>
+    <Discipline>Бази даних</Discipline>
+    <Teacher>Кравченко Наталія Петрівна</Teacher>
+    <Semester>3</Semester>
+    <Score>74</Score>
+  </record>
+  <record id="r003">
+    <FullName>Шевченко Олена Іванівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-21</Group>
+    <Discipline>Алгоритми та структури даних</Discipline>
+    <Teacher>Савченко Ігор Миколайович</Teacher>
+    <Semester>3</Semester>
+    <Score>100</Score>
+  </record>
+  <record id="r004">
+    <FullName>Бондар Андрій Петрович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-21</Group>
+    <Discipline>ООП</Discipline>
+    <Teacher>Петренко Олександр Іванович</Teacher>
+    <Semester>3</Semester>
+    <Score>78</Score>
+  </record>
+  <record id="r005">
+    <FullName>Бондар Андрій Петрович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-21</Group>
+    <Discipline>Бази даних</Discipline>
+    <Teacher>Кравченко Наталія Петрівна</Teacher>
+    <Semester>3</Semester>
+    <Score>60</Score>
+  </record>
+  <record id="r006">
+    <FullName>Бондар Андрій Петрович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-21</Group>
+    <Discipline>Алгоритми та структури даних</Discipline>
+    <Teacher>Савченко Ігор Миколайович</Teacher>
+    <Semester>3</Semester>
+    <Score>89</Score>
+  </record>
+  <record id="r007">
+    <FullName>Коваль Марія Олегівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-21</Group>
+    <Discipline>ООП</Discipline>
+    <Teacher>Петренко Олександр Іванович</Teacher>
+    <Semester>3</Semester>
+    <Score>91</Score>
+  </record>
+  <record id="r008">
+    <FullName>Коваль Марія Олегівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-21</Group>
+    <Discipline>Бази даних</Discipline>
+    <Teacher>Кравченко Наталія Петрівна</Teacher>
+    <Semester>3</Semester>
+    <Score>34</Score>
+  </record>
+  <record id="r009">
+    <FullName>Коваль Марія Олегівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-21</Group>
+    <Discipline>Алгоритми та структури даних</Discipline>
+    <Teacher>Савченко Ігор Миколайович</Teacher>
+    <Semester>3</Semester>
+    <Score>75</Score>
+  </record>
+  <record id="r010">
+    <FullName>Мельник Іван Сергійович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-21</Group>
+    <Discipline>ООП</Discipline>
+    <Teacher>Петренко Олександр Іванович</Teacher>
+    <Semester>3</Semester>
+    <Score>68</Score>
+  </record>
+  <record id="r011">
+    <FullName>Мельник Іван Сергійович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-21</Group>
+    <Discipline>Бази даних</Discipline>
+    <Teacher>Кравченко Наталія Петрівна</Teacher>
+    <Semester>3</Semester>
+    <Score>88</Score>
+  </record>
+  <record id="r012">
+    <FullName>Мельник Іван Сергійович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-21</Group>
+    <Discipline>Алгоритми та структури даних</Discipline>
+    <Teacher>Савченко Ігор Миколайович</Teacher>
+    <Semester>3</Semester>
+    <Score>63</Score>
+  </record>
+  <record id="r013">
+    <FullName>Ткаченко Олена Іванівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-22</Group>
+    <Discipline>ООП</Discipline>
+    <Teacher>Петренко Олександр Іванович</Teacher>
+    <Semester>3</Semester>
+    <Score>95</Score>
+  </record>
+  <record id="r014">
+    <FullName>Ткаченко Олена Іванівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-22</Group>
+    <Discipline>Бази даних</Discipline>
+    <Teacher>Кравченко Наталія Петрівна</Teacher>
+    <Semester>3</Semester>
+    <Score>66</Score>
+  </record>
+  <record id="r015">
+    <FullName>Ткаченко Олена Іванівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-22</Group>
+    <Discipline>Алгоритми та структури даних</Discipline>
+    <Teacher>Савченко Ігор Миколайович</Teacher>
+    <Semester>3</Semester>
+    <Score>59</Score>
+  </record>
+  <record id="r016">
+    <FullName>Лук’яненко Андрій Петрович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-22</Group>
+    <Discipline>ООП</Discipline>
+    <Teacher>Петренко Олександр Іванович</Teacher>
+    <Semester>3</Semester>
+    <Score>82</Score>
+  </record>
+  <record id="r017">
+    <FullName>Лук’яненко Андрій Петрович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-22</Group>
+    <Discipline>Бази даних</Discipline>
+    <Teacher>Кравченко Наталія Петрівна</Teacher>
+    <Semester>3</Semester>
+    <Score>85</Score>
+  </record>
+  <record id="r018">
+    <FullName>Лук’яненко Андрій Петрович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-22</Group>
+    <Discipline>Алгоритми та структури даних</Discipline>
+    <Teacher>Савченко Ігор Миколайович</Teacher>
+    <Semester>3</Semester>
+    <Score>0</Score>
+  </record>
+  <record id="r019">
+    <FullName>Поліщук Марія Олегівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-22</Group>
+    <Discipline>ООП</Discipline>
+    <Teacher>Петренко Олександр Іванович</Teacher>
+    <Semester>3</Semester>
+    <Score>74</Score>
+  </record>
+  <record id="r020">
+    <FullName>Поліщук Марія Олегівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-22</Group>
+    <Discipline>Бази даних</Discipline>
+    <Teacher>Кравченко Наталія Петрівна</Teacher>
+    <Semester>3</Semester>
+    <Score>100</Score>
+  </record>
+  <record id="r021">
+    <FullName>Поліщук Марія Олегівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-22</Group>
+    <Discipline>Алгоритми та структури даних</Discipline>
+    <Teacher>Савченко Ігор Миколайович</Teacher>
+    <Semester>3</Semester>
+    <Score>78</Score>
+  </record>
+  <record id="r022">
+    <FullName>Олійник Іван Сергійович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-22</Group>
+    <Discipline>ООП</Discipline>
+    <Teacher>Петренко Олександр Іванович</Teacher>
+    <Semester>3</Semester>
+    <Score>60</Score>
+  </record>
+  <record id="r023">
+    <FullName>Олійник Іван Сергійович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-22</Group>
+    <Discipline>Бази даних</Discipline>
+    <Teacher>Кравченко Наталія Петрівна</Teacher>
+    <Semester>3</Semester>
+    <Score>89</Score>
+  </record>
+  <record id="r024">
+    <FullName>Олійник Іван Сергійович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Програмних систем</Department>
+    <Group>К-22</Group>
+    <Discipline>Алгоритми та структури даних</Discipline>
+    <Teacher>Савченко Ігор Миколайович</Teacher>
+    <Semester>3</Semester>
+    <Score>91</Score>
+  </record>
+  <record id="r025">
+    <FullName>Сидоренко Олена Іванівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-31</Group>
+    <Discipline>Проєктування інформаційних систем</Discipline>
+    <Teacher>Бондаренко Олена Сергіївна</Teacher>
+    <Semester>5</Semester>
+    <Score>35</Score>
+  </record>
+  <record id="r026">
+    <FullName>Сидоренко Олена Іванівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-31</Group>
+    <Discipline>Комп’ютерні мережі</Discipline>
+    <Teacher>Мороз Віктор Андрійович</Teacher>
+    <Semester>5</Semester>
+    <Score>81</Score>
+  </record>
+  <record id="r027">
+    <FullName>Сидоренко Олена Іванівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-31</Group>
+    <Discipline>Вебпрограмування</Discipline>
+    <Teacher>Романенко Марія Олегівна</Teacher>
+    <Semester>5</Semester>
+    <Score>72</Score>
+  </record>
+  <record id="r028">
+    <FullName>Руденко Андрій Петрович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-31</Group>
+    <Discipline>Проєктування інформаційних систем</Discipline>
+    <Teacher>Бондаренко Олена Сергіївна</Teacher>
+    <Semester>5</Semester>
+    <Score>99</Score>
+  </record>
+  <record id="r029">
+    <FullName>Руденко Андрій Петрович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-31</Group>
+    <Discipline>Комп’ютерні мережі</Discipline>
+    <Teacher>Мороз Віктор Андрійович</Teacher>
+    <Semester>5</Semester>
+    <Score>64</Score>
+  </record>
+  <record id="r030">
+    <FullName>Руденко Андрій Петрович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-31</Group>
+    <Discipline>Вебпрограмування</Discipline>
+    <Teacher>Романенко Марія Олегівна</Teacher>
+    <Semester>5</Semester>
+    <Score>95</Score>
+  </record>
+  <record id="r031">
+    <FullName>Кравець Марія Олегівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-31</Group>
+    <Discipline>Проєктування інформаційних систем</Discipline>
+    <Teacher>Бондаренко Олена Сергіївна</Teacher>
+    <Semester>5</Semester>
+    <Score>66</Score>
+  </record>
+  <record id="r032">
+    <FullName>Кравець Марія Олегівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-31</Group>
+    <Discipline>Комп’ютерні мережі</Discipline>
+    <Teacher>Мороз Віктор Андрійович</Teacher>
+    <Semester>5</Semester>
+    <Score>59</Score>
+  </record>
+  <record id="r033">
+    <FullName>Кравець Марія Олегівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-31</Group>
+    <Discipline>Вебпрограмування</Discipline>
+    <Teacher>Романенко Марія Олегівна</Teacher>
+    <Semester>5</Semester>
+    <Score>82</Score>
+  </record>
+  <record id="r034">
+    <FullName>Захарченко Іван Сергійович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-31</Group>
+    <Discipline>Проєктування інформаційних систем</Discipline>
+    <Teacher>Бондаренко Олена Сергіївна</Teacher>
+    <Semester>5</Semester>
+    <Score>85</Score>
+  </record>
+  <record id="r035">
+    <FullName>Захарченко Іван Сергійович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-31</Group>
+    <Discipline>Комп’ютерні мережі</Discipline>
+    <Teacher>Мороз Віктор Андрійович</Teacher>
+    <Semester>5</Semester>
+    <Score>0</Score>
+  </record>
+  <record id="r036">
+    <FullName>Захарченко Іван Сергійович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-31</Group>
+    <Discipline>Вебпрограмування</Discipline>
+    <Teacher>Романенко Марія Олегівна</Teacher>
+    <Semester>5</Semester>
+    <Score>74</Score>
+  </record>
+  <record id="r037">
+    <FullName>Козак Олена Іванівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-32</Group>
+    <Discipline>Проєктування інформаційних систем</Discipline>
+    <Teacher>Бондаренко Олена Сергіївна</Teacher>
+    <Semester>5</Semester>
+    <Score>68</Score>
+  </record>
+  <record id="r038">
+    <FullName>Козак Олена Іванівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-32</Group>
+    <Discipline>Комп’ютерні мережі</Discipline>
+    <Teacher>Мороз Віктор Андрійович</Teacher>
+    <Semester>5</Semester>
+    <Score>88</Score>
+  </record>
+  <record id="r039">
+    <FullName>Козак Олена Іванівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-32</Group>
+    <Discipline>Вебпрограмування</Discipline>
+    <Teacher>Романенко Марія Олегівна</Teacher>
+    <Semester>5</Semester>
+    <Score>63</Score>
+  </record>
+  <record id="r040">
+    <FullName>Павленко Андрій Петрович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-32</Group>
+    <Discipline>Проєктування інформаційних систем</Discipline>
+    <Teacher>Бондаренко Олена Сергіївна</Teacher>
+    <Semester>5</Semester>
+    <Score>90</Score>
+  </record>
+  <record id="r041">
+    <FullName>Павленко Андрій Петрович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-32</Group>
+    <Discipline>Комп’ютерні мережі</Discipline>
+    <Teacher>Мороз Віктор Андрійович</Teacher>
+    <Semester>5</Semester>
+    <Score>57</Score>
+  </record>
+  <record id="r042">
+    <FullName>Павленко Андрій Петрович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-32</Group>
+    <Discipline>Вебпрограмування</Discipline>
+    <Teacher>Романенко Марія Олегівна</Teacher>
+    <Semester>5</Semester>
+    <Score>35</Score>
+  </record>
+  <record id="r043">
+    <FullName>Демченко Марія Олегівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-32</Group>
+    <Discipline>Проєктування інформаційних систем</Discipline>
+    <Teacher>Бондаренко Олена Сергіївна</Teacher>
+    <Semester>5</Semester>
+    <Score>81</Score>
+  </record>
+  <record id="r044">
+    <FullName>Демченко Марія Олегівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-32</Group>
+    <Discipline>Комп’ютерні мережі</Discipline>
+    <Teacher>Мороз Віктор Андрійович</Teacher>
+    <Semester>5</Semester>
+    <Score>72</Score>
+  </record>
+  <record id="r045">
+    <FullName>Демченко Марія Олегівна</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-32</Group>
+    <Discipline>Вебпрограмування</Discipline>
+    <Teacher>Романенко Марія Олегівна</Teacher>
+    <Semester>5</Semester>
+    <Score>99</Score>
+  </record>
+  <record id="r046">
+    <FullName>Савчук Іван Сергійович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-32</Group>
+    <Discipline>Проєктування інформаційних систем</Discipline>
+    <Teacher>Бондаренко Олена Сергіївна</Teacher>
+    <Semester>5</Semester>
+    <Score>64</Score>
+  </record>
+  <record id="r047">
+    <FullName>Савчук Іван Сергійович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-32</Group>
+    <Discipline>Комп’ютерні мережі</Discipline>
+    <Teacher>Мороз Віктор Андрійович</Teacher>
+    <Semester>5</Semester>
+    <Score>95</Score>
+  </record>
+  <record id="r048">
+    <FullName>Савчук Іван Сергійович</FullName>
+    <Faculty>Комп’ютерних наук</Faculty>
+    <Department>Інформаційних систем</Department>
+    <Group>ІС-32</Group>
+    <Discipline>Вебпрограмування</Discipline>
+    <Teacher>Романенко Марія Олегівна</Teacher>
+    <Semester>5</Semester>
+    <Score>66</Score>
+  </record>
+  <record id="r049">
+    <FullName>Литвиненко Олена Іванівна</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-21</Group>
+    <Discipline>Математичний аналіз</Discipline>
+    <Teacher>Дорошенко Сергій Петрович</Teacher>
+    <Semester>3</Semester>
+    <Score>60</Score>
+  </record>
+  <record id="r050">
+    <FullName>Литвиненко Олена Іванівна</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-21</Group>
+    <Discipline>Теорія ймовірностей</Discipline>
+    <Teacher>Лисенко Тетяна Іванівна</Teacher>
+    <Semester>3</Semester>
+    <Score>89</Score>
+  </record>
+  <record id="r051">
+    <FullName>Литвиненко Олена Іванівна</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-21</Group>
+    <Discipline>Чисельні методи</Discipline>
+    <Teacher>Ткачук Андрій Васильович</Teacher>
+    <Semester>3</Semester>
+    <Score>91</Score>
+  </record>
+  <record id="r052">
+    <FullName>Климчук Андрій Петрович</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-21</Group>
+    <Discipline>Математичний аналіз</Discipline>
+    <Teacher>Дорошенко Сергій Петрович</Teacher>
+    <Semester>3</Semester>
+    <Score>34</Score>
+  </record>
+  <record id="r053">
+    <FullName>Климчук Андрій Петрович</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-21</Group>
+    <Discipline>Теорія ймовірностей</Discipline>
+    <Teacher>Лисенко Тетяна Іванівна</Teacher>
+    <Semester>3</Semester>
+    <Score>75</Score>
+  </record>
+  <record id="r054">
+    <FullName>Климчук Андрій Петрович</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-21</Group>
+    <Discipline>Чисельні методи</Discipline>
+    <Teacher>Ткачук Андрій Васильович</Teacher>
+    <Semester>3</Semester>
+    <Score>68</Score>
+  </record>
+  <record id="r055">
+    <FullName>Романюк Марія Олегівна</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-21</Group>
+    <Discipline>Математичний аналіз</Discipline>
+    <Teacher>Дорошенко Сергій Петрович</Teacher>
+    <Semester>3</Semester>
+    <Score>88</Score>
+  </record>
+  <record id="r056">
+    <FullName>Романюк Марія Олегівна</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-21</Group>
+    <Discipline>Теорія ймовірностей</Discipline>
+    <Teacher>Лисенко Тетяна Іванівна</Teacher>
+    <Semester>3</Semester>
+    <Score>63</Score>
+  </record>
+  <record id="r057">
+    <FullName>Романюк Марія Олегівна</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-21</Group>
+    <Discipline>Чисельні методи</Discipline>
+    <Teacher>Ткачук Андрій Васильович</Teacher>
+    <Semester>3</Semester>
+    <Score>90</Score>
+  </record>
+  <record id="r058">
+    <FullName>Мазур Іван Сергійович</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-21</Group>
+    <Discipline>Математичний аналіз</Discipline>
+    <Teacher>Дорошенко Сергій Петрович</Teacher>
+    <Semester>3</Semester>
+    <Score>57</Score>
+  </record>
+  <record id="r059">
+    <FullName>Мазур Іван Сергійович</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-21</Group>
+    <Discipline>Теорія ймовірностей</Discipline>
+    <Teacher>Лисенко Тетяна Іванівна</Teacher>
+    <Semester>3</Semester>
+    <Score>35</Score>
+  </record>
+  <record id="r060">
+    <FullName>Мазур Іван Сергійович</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-21</Group>
+    <Discipline>Чисельні методи</Discipline>
+    <Teacher>Ткачук Андрій Васильович</Teacher>
+    <Semester>3</Semester>
+    <Score>81</Score>
+  </record>
+  <record id="r061">
+    <FullName>Петрук Олена Іванівна</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-22</Group>
+    <Discipline>Математичний аналіз</Discipline>
+    <Teacher>Дорошенко Сергій Петрович</Teacher>
+    <Semester>3</Semester>
+    <Score>85</Score>
+  </record>
+  <record id="r062">
+    <FullName>Петрук Олена Іванівна</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-22</Group>
+    <Discipline>Теорія ймовірностей</Discipline>
+    <Teacher>Лисенко Тетяна Іванівна</Teacher>
+    <Semester>3</Semester>
+    <Score>0</Score>
+  </record>
+  <record id="r063">
+    <FullName>Петрук Олена Іванівна</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-22</Group>
+    <Discipline>Чисельні методи</Discipline>
+    <Teacher>Ткачук Андрій Васильович</Teacher>
+    <Semester>3</Semester>
+    <Score>74</Score>
+  </record>
+  <record id="r064">
+    <FullName>Кулик Андрій Петрович</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-22</Group>
+    <Discipline>Математичний аналіз</Discipline>
+    <Teacher>Дорошенко Сергій Петрович</Teacher>
+    <Semester>3</Semester>
+    <Score>100</Score>
+  </record>
+  <record id="r065">
+    <FullName>Кулик Андрій Петрович</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-22</Group>
+    <Discipline>Теорія ймовірностей</Discipline>
+    <Teacher>Лисенко Тетяна Іванівна</Teacher>
+    <Semester>3</Semester>
+    <Score>78</Score>
+  </record>
+  <record id="r066">
+    <FullName>Кулик Андрій Петрович</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-22</Group>
+    <Discipline>Чисельні методи</Discipline>
+    <Teacher>Ткачук Андрій Васильович</Teacher>
+    <Semester>3</Semester>
+    <Score>60</Score>
+  </record>
+  <record id="r067">
+    <FullName>Левченко Марія Олегівна</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-22</Group>
+    <Discipline>Математичний аналіз</Discipline>
+    <Teacher>Дорошенко Сергій Петрович</Teacher>
+    <Semester>3</Semester>
+    <Score>89</Score>
+  </record>
+  <record id="r068">
+    <FullName>Левченко Марія Олегівна</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-22</Group>
+    <Discipline>Теорія ймовірностей</Discipline>
+    <Teacher>Лисенко Тетяна Іванівна</Teacher>
+    <Semester>3</Semester>
+    <Score>91</Score>
+  </record>
+  <record id="r069">
+    <FullName>Левченко Марія Олегівна</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-22</Group>
+    <Discipline>Чисельні методи</Discipline>
+    <Teacher>Ткачук Андрій Васильович</Teacher>
+    <Semester>3</Semester>
+    <Score>34</Score>
+  </record>
+  <record id="r070">
+    <FullName>Семенюк Іван Сергійович</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-22</Group>
+    <Discipline>Математичний аналіз</Discipline>
+    <Teacher>Дорошенко Сергій Петрович</Teacher>
+    <Semester>3</Semester>
+    <Score>75</Score>
+  </record>
+  <record id="r071">
+    <FullName>Семенюк Іван Сергійович</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-22</Group>
+    <Discipline>Теорія ймовірностей</Discipline>
+    <Teacher>Лисенко Тетяна Іванівна</Teacher>
+    <Semester>3</Semester>
+    <Score>68</Score>
+  </record>
+  <record id="r072">
+    <FullName>Семенюк Іван Сергійович</FullName>
+    <Faculty>Математики</Faculty>
+    <Department>Прикладної математики</Department>
+    <Group>М-22</Group>
+    <Discipline>Чисельні методи</Discipline>
+    <Teacher>Ткачук Андрій Васильович</Teacher>
+    <Semester>3</Semester>
+    <Score>88</Score>
+  </record>
+  <record id="r073">
+    <FullName>Марченко Олена Іванівна</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-31</Group>
+    <Discipline>Економетрика</Discipline>
+    <Teacher>Коваленко Юлія Михайлівна</Teacher>
+    <Semester>5</Semester>
+    <Score>64</Score>
+  </record>
+  <record id="r074">
+    <FullName>Марченко Олена Іванівна</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-31</Group>
+    <Discipline>Економічне моделювання</Discipline>
+    <Teacher>Шевчук Павло Олексійович</Teacher>
+    <Semester>5</Semester>
+    <Score>95</Score>
+  </record>
+  <record id="r075">
+    <FullName>Марченко Олена Іванівна</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-31</Group>
+    <Discipline>Статистика</Discipline>
+    <Teacher>Гончаренко Ірина Вікторівна</Teacher>
+    <Semester>5</Semester>
+    <Score>66</Score>
+  </record>
+  <record id="r076">
+    <FullName>Гриценко Андрій Петрович</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-31</Group>
+    <Discipline>Економетрика</Discipline>
+    <Teacher>Коваленко Юлія Михайлівна</Teacher>
+    <Semester>5</Semester>
+    <Score>59</Score>
+  </record>
+  <record id="r077">
+    <FullName>Гриценко Андрій Петрович</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-31</Group>
+    <Discipline>Економічне моделювання</Discipline>
+    <Teacher>Шевчук Павло Олексійович</Teacher>
+    <Semester>5</Semester>
+    <Score>82</Score>
+  </record>
+  <record id="r078">
+    <FullName>Гриценко Андрій Петрович</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-31</Group>
+    <Discipline>Статистика</Discipline>
+    <Teacher>Гончаренко Ірина Вікторівна</Teacher>
+    <Semester>5</Semester>
+    <Score>85</Score>
+  </record>
+  <record id="r079">
+    <FullName>Соловей Марія Олегівна</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-31</Group>
+    <Discipline>Економетрика</Discipline>
+    <Teacher>Коваленко Юлія Михайлівна</Teacher>
+    <Semester>5</Semester>
+    <Score>0</Score>
+  </record>
+  <record id="r080">
+    <FullName>Соловей Марія Олегівна</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-31</Group>
+    <Discipline>Економічне моделювання</Discipline>
+    <Teacher>Шевчук Павло Олексійович</Teacher>
+    <Semester>5</Semester>
+    <Score>74</Score>
+  </record>
+  <record id="r081">
+    <FullName>Соловей Марія Олегівна</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-31</Group>
+    <Discipline>Статистика</Discipline>
+    <Teacher>Гончаренко Ірина Вікторівна</Teacher>
+    <Semester>5</Semester>
+    <Score>100</Score>
+  </record>
+  <record id="r082">
+    <FullName>Василенко Іван Сергійович</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-31</Group>
+    <Discipline>Економетрика</Discipline>
+    <Teacher>Коваленко Юлія Михайлівна</Teacher>
+    <Semester>5</Semester>
+    <Score>78</Score>
+  </record>
+  <record id="r083">
+    <FullName>Василенко Іван Сергійович</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-31</Group>
+    <Discipline>Економічне моделювання</Discipline>
+    <Teacher>Шевчук Павло Олексійович</Teacher>
+    <Semester>5</Semester>
+    <Score>60</Score>
+  </record>
+  <record id="r084">
+    <FullName>Василенко Іван Сергійович</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-31</Group>
+    <Discipline>Статистика</Discipline>
+    <Teacher>Гончаренко Ірина Вікторівна</Teacher>
+    <Semester>5</Semester>
+    <Score>89</Score>
+  </record>
+  <record id="r085">
+    <FullName>Даниленко Олена Іванівна</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-32</Group>
+    <Discipline>Економетрика</Discipline>
+    <Teacher>Коваленко Юлія Михайлівна</Teacher>
+    <Semester>5</Semester>
+    <Score>57</Score>
+  </record>
+  <record id="r086">
+    <FullName>Даниленко Олена Іванівна</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-32</Group>
+    <Discipline>Економічне моделювання</Discipline>
+    <Teacher>Шевчук Павло Олексійович</Teacher>
+    <Semester>5</Semester>
+    <Score>35</Score>
+  </record>
+  <record id="r087">
+    <FullName>Даниленко Олена Іванівна</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-32</Group>
+    <Discipline>Статистика</Discipline>
+    <Teacher>Гончаренко Ірина Вікторівна</Teacher>
+    <Semester>5</Semester>
+    <Score>81</Score>
+  </record>
+  <record id="r088">
+    <FullName>Іщенко Андрій Петрович</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-32</Group>
+    <Discipline>Економетрика</Discipline>
+    <Teacher>Коваленко Юлія Михайлівна</Teacher>
+    <Semester>5</Semester>
+    <Score>72</Score>
+  </record>
+  <record id="r089">
+    <FullName>Іщенко Андрій Петрович</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-32</Group>
+    <Discipline>Економічне моделювання</Discipline>
+    <Teacher>Шевчук Павло Олексійович</Teacher>
+    <Semester>5</Semester>
+    <Score>99</Score>
+  </record>
+  <record id="r090">
+    <FullName>Іщенко Андрій Петрович</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-32</Group>
+    <Discipline>Статистика</Discipline>
+    <Teacher>Гончаренко Ірина Вікторівна</Teacher>
+    <Semester>5</Semester>
+    <Score>64</Score>
+  </record>
+  <record id="r091">
+    <FullName>Лозовий Марія Олегівна</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-32</Group>
+    <Discipline>Економетрика</Discipline>
+    <Teacher>Коваленко Юлія Михайлівна</Teacher>
+    <Semester>5</Semester>
+    <Score>95</Score>
+  </record>
+  <record id="r092">
+    <FullName>Лозовий Марія Олегівна</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-32</Group>
+    <Discipline>Економічне моделювання</Discipline>
+    <Teacher>Шевчук Павло Олексійович</Teacher>
+    <Semester>5</Semester>
+    <Score>66</Score>
+  </record>
+  <record id="r093">
+    <FullName>Лозовий Марія Олегівна</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-32</Group>
+    <Discipline>Статистика</Discipline>
+    <Teacher>Гончаренко Ірина Вікторівна</Teacher>
+    <Semester>5</Semester>
+    <Score>59</Score>
+  </record>
+  <record id="r094">
+    <FullName>Яремчук Іван Сергійович</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-32</Group>
+    <Discipline>Економетрика</Discipline>
+    <Teacher>Коваленко Юлія Михайлівна</Teacher>
+    <Semester>5</Semester>
+    <Score>82</Score>
+  </record>
+  <record id="r095">
+    <FullName>Яремчук Іван Сергійович</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-32</Group>
+    <Discipline>Економічне моделювання</Discipline>
+    <Teacher>Шевчук Павло Олексійович</Teacher>
+    <Semester>5</Semester>
+    <Score>85</Score>
+  </record>
+  <record id="r096">
+    <FullName>Яремчук Іван Сергійович</FullName>
+    <Faculty>Економіки</Faculty>
+    <Department>Економічної кібернетики</Department>
+    <Group>ЕК-32</Group>
+    <Discipline>Статистика</Discipline>
+    <Teacher>Гончаренко Ірина Вікторівна</Teacher>
+    <Semester>5</Semester>
+    <Score>0</Score>
+  </record>
+</performance>

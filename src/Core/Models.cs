@@ -4,12 +4,12 @@ namespace StudentPerformance.Core;
 
 // Один запис — результат студента з однієї дисципліни.
 public sealed record GradeRecord(string Id, string FullName, string Faculty,
-    string Department, string Group, string Discipline, int Semester, int Score)
+    string Department, string Group, string Discipline, int Semester, int Score, string Teacher = "")
 {
     public string Ects => Score >= 90 ? "A" : Score >= 82 ? "B" : Score >= 75 ? "C"
         : Score >= 64 ? "D" : Score >= 60 ? "E" : Score >= 35 ? "FX" : "F";
 
-    public static readonly string[] Fields = ["FullName", "Faculty", "Department", "Group", "Discipline", "Semester", "Score"];
+    public static readonly string[] Fields = ["FullName", "Faculty", "Department", "Group", "Discipline", "Semester", "Score", "Teacher"];
 
     public static GradeRecord From(string id, IReadOnlyDictionary<string, string> values)
     {
@@ -21,7 +21,8 @@ public sealed record GradeRecord(string Id, string FullName, string Faculty,
         if (score is < 0 or > 100 || semester is < 1 or > 12)
             throw new FormatException($"Некоректний бал або семестр у записі {id}.");
         return new(id, Required("FullName"), Required("Faculty"), Required("Department"),
-            Required("Group"), Required("Discipline"), semester, score);
+            Required("Group"), Required("Discipline"), semester, score,
+            values.TryGetValue("Teacher", out var teacher) ? teacher.Trim() : "");
     }
 }
 
@@ -44,7 +45,7 @@ public sealed class QueryBuilder
         if (c.MinScore.HasValue) rules.Add(r => r.Score >= c.MinScore);
         if (c.MaxScore.HasValue) rules.Add(r => r.Score <= c.MaxScore);
         foreach (var word in c.Keywords.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries))
-            rules.Add(r => Contains(string.Join(" ", r.FullName, r.Faculty, r.Department, r.Group, r.Discipline), word));
+            rules.Add(r => Contains(string.Join(" ", r.FullName, r.Faculty, r.Department, r.Group, r.Discipline, r.Teacher), word));
         // Запит динамічно складається лише з активних умов. Усі умови поєднано AND.
         return r => rules.All(rule => rule(r));
     }
