@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
- xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="StudentPerformance.App">
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:StudentPerformance" x:Class="StudentPerformance.App">
  <Application.Resources>
   <ResourceDictionary>
    <Color x:Key="Background">#10141D</Color><Color x:Key="Surface">#191F2B</Color>
@@ -9,7 +9,7 @@
    <Style TargetType="Label"><Setter Property="TextColor" Value="{StaticResource Text}"/><Setter Property="FontSize" Value="14"/></Style>
    <Style TargetType="Entry"><Setter Property="TextColor" Value="{StaticResource Text}"/><Setter Property="PlaceholderColor" Value="#94A3BC"/><Setter Property="BackgroundColor" Value="{StaticResource Input}"/><Setter Property="HeightRequest" Value="42"/><Setter Property="FontSize" Value="14"/></Style>
    <Style TargetType="Picker"><Setter Property="TextColor" Value="{StaticResource Text}"/><Setter Property="TitleColor" Value="{StaticResource Muted}"/><Setter Property="BackgroundColor" Value="{StaticResource Input}"/><Setter Property="FontSize" Value="14"/></Style>
-   <Style TargetType="Button"><Setter Property="BackgroundColor" Value="#2C3A53"/><Setter Property="TextColor" Value="{StaticResource Text}"/><Setter Property="CornerRadius" Value="8"/><Setter Property="Padding" Value="16,11"/><Setter Property="FontSize" Value="14"/></Style>
+   <Style TargetType="Button"><Setter Property="local:ButtonPressAnimation.IsEnabled" Value="True"/><Setter Property="BackgroundColor" Value="#2C3A53"/><Setter Property="TextColor" Value="{StaticResource Text}"/><Setter Property="CornerRadius" Value="8"/><Setter Property="Padding" Value="16,11"/><Setter Property="FontSize" Value="14"/></Style>
    <Style x:Key="FieldLabel" TargetType="Label"><Setter Property="TextColor" Value="{StaticResource Muted}"/><Setter Property="FontSize" Value="12"/><Setter Property="Margin" Value="0,9,0,3"/></Style>
   </ResourceDictionary>
  </Application.Resources>
