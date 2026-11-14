@@ -17,14 +17,15 @@ public sealed class GoogleDriveClient
     public GoogleDriveClient(GoogleDriveAuth auth) : this(auth, new HttpClient { Timeout = TimeSpan.FromSeconds(90) }) { }
     internal GoogleDriveClient(GoogleDriveAuth auth, HttpClient http) { this.auth = auth; this.http = http; }
 
-    private async Task<HttpResponseMessage> SendAsync(Func<HttpRequestMessage> create, CancellationToken token)
+    private async Task<HttpResponseMessage> SendAsync(Func<HttpRequestMessage> create, CancellationToken token,
+        HttpCompletionOption completion = HttpCompletionOption.ResponseContentRead)
     {
         for (var attempt = 0; ; attempt++)
         {
             var accessToken = await auth.GetTokenAsync(token);
             using var request = create();
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var response = await http.SendAsync(request, token);
+            var response = await http.SendAsync(request, completion, token);
             if (response.StatusCode == HttpStatusCode.Unauthorized && attempt == 0)
             {
                 response.Dispose(); auth.InvalidateAccessToken(); continue;
@@ -56,10 +57,13 @@ public sealed class GoogleDriveClient
 
     public async Task DownloadAsync(DriveXmlFile file, string path, CancellationToken token)
     {
+        using var timeout = CancellationTokenSource.CreateLinkedTokenSource(token);
+        timeout.CancelAfter(TimeSpan.FromSeconds(90));
         using var response = await SendAsync(() => new HttpRequestMessage(HttpMethod.Get,
-            "https://www.googleapis.com/drive/v3/files/" + Uri.EscapeDataString(file.Id) + "?alt=media"), token);
+            "https://www.googleapis.com/drive/v3/files/" + Uri.EscapeDataString(file.Id) + "?alt=media"), timeout.Token,
+            HttpCompletionOption.ResponseHeadersRead);
         await using var output = File.Create(path);
-        await response.Content.CopyToAsync(output, token);
+        await response.Content.CopyToAsync(output, timeout.Token);
     }
 
     public async Task UploadAsync(string name, string xml, CancellationToken token)

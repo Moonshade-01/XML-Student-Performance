@@ -32,6 +32,7 @@ The application starts with an empty result list. Click **Відкрити XML**
 
 ## Project structure
 
+- `Student-Performance.sln`: the solution to open in Visual Studio.
 - `Student-Performance.csproj`: the MAUI project.
 - `Examples/Student-Performance.xml`: 45 grade records, 15 students, 8 groups, 3 faculties, 4 departments, 12 disciplines and 12 teachers. Students with any score below 60 have been removed from this sample. All personal data is fictional.
 - `src/Core/`: models, query construction, XML strategies and services.
@@ -43,6 +44,58 @@ The application starts with an empty result list. Click **Відкрити XML**
 
 Use a `performance` root without a namespace and direct `record` children with unique `id` attributes. Each record requires nonempty `FullName`, `Faculty`, `Department`, `Group`, `Discipline`, `Semester` and `Score` elements. One record describes one student's result in one discipline. Scores must be 0–100 and semesters 1–12. The optional `Teacher` element specifies the teacher; older files without it remain supported. Teacher names are included in keyword search, displayed in the results, and preserved in XML and HTML exports.
 
+Known fields must contain plain text or CDATA, without nested elements or XML namespaces. Duplicate fields and IDs are rejected consistently by all three analysis strategies. Unknown extension fields are ignored. A failed query or file load keeps the previous successful result visible.
+
+## Class diagram
+
+The laboratory requires a class diagram and a design pattern. `PerformanceService` is the Strategy context; the three XML implementations share `IXmlAnalysisStrategy`. The UI delegates analysis, query construction, persistence, authentication and cloud operations to dedicated classes.
+
+```mermaid
+classDiagram
+    MainPage --> PerformanceViewModel
+    MainPage --> GoogleDrivePage
+    PerformanceViewModel --> PerformanceService
+    PerformanceViewModel --> IDocumentPicker
+    IDocumentPicker <|.. WindowsDocumentPicker
+    PerformanceService --> QueryBuilder
+    PerformanceService --> XmlFileStore
+    PerformanceService --> HtmlTransformService
+    PerformanceService --> IXmlAnalysisStrategy : Strategy
+    IXmlAnalysisStrategy <|.. SaxAnalysisStrategy
+    IXmlAnalysisStrategy <|.. DomAnalysisStrategy
+    IXmlAnalysisStrategy <|.. LinqAnalysisStrategy
+    QueryBuilder ..> SearchCriteria
+    IXmlAnalysisStrategy ..> GradeRecord
+    XmlFileStore ..> GradeRecord
+    GoogleDrivePage --> GoogleDriveClient
+    GoogleDrivePage --> GoogleDriveAuth
+    GoogleDrivePage --> PerformanceService
+    GoogleDriveClient --> GoogleDriveAuth
+    class IXmlAnalysisStrategy {
+        <<interface>>
+        +Name string
+        +Analyze(path, predicate) IReadOnlyList~GradeRecord~
+    }
+    class PerformanceService {
+        +Strategy IXmlAnalysisStrategy
+        +Search(path, criteria)
+        +Save(path, rows)
+        +ExportHtml(xmlPath, xslPath, htmlPath)
+    }
+    class GradeRecord {
+        +Id string
+        +FullName string
+        +Faculty string
+        +Department string
+        +Group string
+        +Discipline string
+        +Teacher string
+        +Semester int
+        +Score int
+        +Grade string
+    }
+```
+
 ## Features
 
 - Three interchangeable XML analysis strategies: streaming `XmlReader`, DOM `XmlDocument`, and LINQ to XML `XDocument`.
@@ -53,7 +106,17 @@ Use a `performance` root without a namespace and direct `record` children with u
 - Direct Google Drive API integration: browser sign-in, XML listing and download, and upload of the current selection as a new file.
 - A dark MAUI interface with MVVM, record count and the average score of the current selection.
 
-The streaming implementation is labelled SAX to follow the supplied laboratory materials. Technically, `XmlReader` uses a pull model, while classic SAX uses a push/event model.
+The streaming implementation is labelled SAX to follow the supplied laboratory materials. Technically, `XmlReader` uses a pull model, while classic SAX uses a push/event model. MAUI is used under the laboratory's allowance to choose an alternative to Windows Forms.
+
+## Verification
+
+The audit on 14 November 2026 passed 319 local checks and 25 mocked HTTP/OAuth checks. Local coverage includes all three parsers, independent expected filter results, combined filters, malformed XML, namespaces, duplicate IDs/fields, CDATA, XML round trips, HTML escaping, grade boundaries, ViewModel commands, cancellation of file dialogs and cloud-cache replacement. HTTP checks cover authorization headers, refresh tokens, pagination, download/upload requests, partial consent, persistent authorization failures and sign-out.
+
+A Windows UI test opened the 45-record sample, filtered four records by teacher, and saved both XML and HTML through the system dialogs. Using the existing authorized Google session, a user-approved `Student-Performance-test.xml` containing those four fictional records was uploaded, listed and downloaded back successfully. No other cloud files were changed. A fresh interactive sign-in with a new Google account was not repeated.
+
+Debug and framework-dependent Release builds passed without warnings or errors. A self-contained Release restore requires runtime packages available from NuGet; offline availability of those packages was not verified.
+
+Keyword filtering no longer concatenates every record's text once per search word. In an isolated CPU-only check with 30,000 in-memory records and five matching words, the median of seven runs was approximately 68 ms before and 44 ms after the change, with about 28 MB of temporary allocations removed per run. These timings depend on the machine and do not represent the total XML load or UI rendering time. Cloud downloads are streamed to disk instead of buffering the complete XML response in memory; serialization for cloud uploads runs off the UI thread.
 
 ## Usage
 
@@ -87,7 +150,7 @@ See Google's [desktop OAuth documentation](https://developers.google.com/identit
 
 - Select an XML from the list and click **Відкрити вибраний XML**. Click **Назад** to see the records and use the existing filters and analysis strategies.
 - To try the supplied sample, upload `Examples/Student-Performance.xml` through the Google Drive website, then refresh the list in the application.
-- To save, first select the records on the main screen, then open Google Drive, enter a filename and click **Створити XML у Google Drive**. The cloud page captures the current selection when opened.
+- To save, first select the records on the main screen, then open Google Drive, enter a filename and click **Створити XML у Google Drive**. Upload uses the current selection, including a file just opened from the cloud page.
 - Each upload creates a **new file in the root of My Drive**. Existing files are never overwritten; repeated names can therefore create multiple files. Refresh the list after saving.
 - **Скасувати операцію** cancels an in-progress request. Browser sign-in expires after three minutes. Cancellation during upload can leave an already-created file in Drive; refresh the list before retrying.
 - **Вийти** clears the locally stored session, while keeping the imported client configuration. It does not sign out of the browser or revoke Google's grant. Access can be revoked in your Google account's connected-app settings. Import another Desktop JSON to replace the configuration.

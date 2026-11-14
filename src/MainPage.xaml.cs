@@ -23,6 +23,6 @@ public partial class MainPage : ContentPage
     private async void OnGoogleDriveClicked(object? sender, EventArgs e)
     {
         if (viewModel.IsBusy) return;
-        await Navigation.PushModalAsync(new GoogleDrivePage(driveAuth, drive, service, viewModel.Rows, viewModel.OpenCloudXmlAsync));
+        await Navigation.PushModalAsync(new GoogleDrivePage(driveAuth, drive, service, () => viewModel.Rows, viewModel.OpenCloudXmlAsync));
     }
 }

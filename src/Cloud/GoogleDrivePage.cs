@@ -8,7 +8,8 @@ public sealed class GoogleDrivePage : ContentPage
     private readonly GoogleDriveAuth auth;
     private readonly GoogleDriveClient drive;
     private readonly PerformanceService service;
-    private readonly IReadOnlyList<GradeRecord> rows;
+    private readonly Func<IReadOnlyList<GradeRecord>> getRows;
+    private readonly Label selection = new();
     private readonly Func<string, Task> openXml;
     private readonly Picker files = new() { Title = "XML-файл у Google Drive", ItemDisplayBinding = new Binding(nameof(DriveXmlFile.Label)) };
     private readonly Entry filename = new() { Text = "Student-Performance-results.xml", Placeholder = "Назва нового XML" };
@@ -18,10 +19,10 @@ public sealed class GoogleDrivePage : ContentPage
     private CancellationTokenSource? operation;
 
     public GoogleDrivePage(GoogleDriveAuth auth, GoogleDriveClient drive, PerformanceService service,
-        IReadOnlyList<GradeRecord> rows, Func<string, Task> openXml)
+        Func<IReadOnlyList<GradeRecord>> getRows, Func<string, Task> openXml)
     {
         this.auth = auth; this.drive = drive; this.service = service;
-        this.rows = rows.ToArray(); this.openXml = openXml;
+        this.getRows = getRows; this.openXml = openXml;
         Title = "Google Drive"; BackgroundColor = Color.FromArgb("10141D");
         var layout = new VerticalStackLayout { Padding = 28, Spacing = 14, MaximumWidthRequest = 850, HorizontalOptions = LayoutOptions.Fill };
         layout.Add(new Label { Text = "Google Drive", FontSize = 28, FontAttributes = FontAttributes.Bold });
@@ -33,7 +34,7 @@ public sealed class GoogleDrivePage : ContentPage
         layout.Add(controls); layout.Add(files);
         var open = new Button { Text = "Відкрити вибраний XML" };
         actions.Add(open); open.Clicked += async (_, _) => await Run(Open); layout.Add(open);
-        layout.Add(new Label { Text = $"Зберегти поточну вибірку: {this.rows.Count} записів. Буде створено новий файл у корені My Drive." });
+        UpdateSelection(); layout.Add(selection);
         layout.Add(filename);
         var save = new Button { Text = "Створити XML у Google Drive" };
         actions.Add(save); save.Clicked += async (_, _) => await Run(Upload); layout.Add(save);
@@ -96,6 +97,7 @@ public sealed class GoogleDrivePage : ContentPage
         try { await drive.DownloadAsync(file, temporary, token); token.ThrowIfCancellationRequested(); await openXml(temporary); }
         catch { if (File.Exists(temporary)) File.Delete(temporary); throw; }
         message.Text = $"Відкрито: {file.Name}. Поверніться до результатів кнопкою «Назад».";
+        UpdateSelection();
     }
 
     private async Task Upload(CancellationToken token)
@@ -105,10 +107,11 @@ public sealed class GoogleDrivePage : ContentPage
         if (!name.EndsWith(".xml", StringComparison.OrdinalIgnoreCase)) name += ".xml";
         // Authenticate before writing the temporary selection.
         await auth.GetTokenAsync(token);
+        var rows = getRows().ToArray();
         var temporary = Path.Combine(FileSystem.CacheDirectory, Guid.NewGuid() + ".xml");
         try
         {
-            service.Save(temporary, rows);
+            await Task.Run(() => service.Save(temporary, rows), token);
             await drive.UploadAsync(name, await File.ReadAllTextAsync(temporary, token), token);
         }
         finally { if (File.Exists(temporary)) File.Delete(temporary); }
@@ -122,4 +125,5 @@ public sealed class GoogleDrivePage : ContentPage
     }
 
     protected override void OnDisappearing() { operation?.Cancel(); base.OnDisappearing(); }
+    private void UpdateSelection() => selection.Text = $"Зберегти поточну вибірку: {getRows().Count} записів. Буде створено новий файл у корені My Drive.";
 }

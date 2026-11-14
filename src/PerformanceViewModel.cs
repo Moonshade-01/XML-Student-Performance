@@ -85,9 +85,10 @@ public sealed class PerformanceViewModel : INotifyPropertyChanged
             return;
         }
         var criteria = new SearchCriteria(Keywords, Faculty, Department, Group, Discipline, Number(Semester), Number(MinScore), Number(MaxScore));
-        service.Strategy = SelectedStrategy;
+        var strategy = SelectedStrategy;
+        service.Strategy = strategy;
         Rows = await Task.Run(() => service.Search(source, criteria));
-        Status = $"{SelectedStrategy.Name} • {ResultCount} у вибірці";
+        Status = $"{strategy.Name} • {ResultCount} у вибірці";
     }
     private async Task Open()
     {

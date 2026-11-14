@@ -35,17 +35,28 @@ public sealed class QueryBuilder
         if (c.MinScore is < 0 or > 100 || c.MaxScore is < 0 or > 100 || c.MinScore > c.MaxScore
             || c.Semester is < 1 or > 12) throw new ArgumentException("Перевірте межі балів і семестр.");
         var rules = new List<Func<GradeRecord, bool>>();
-        static bool Contains(string text, string value) => text.Contains(value.Trim(), StringComparison.OrdinalIgnoreCase);
-        if (!string.IsNullOrWhiteSpace(c.Faculty)) rules.Add(r => Contains(r.Faculty, c.Faculty));
-        if (!string.IsNullOrWhiteSpace(c.Department)) rules.Add(r => Contains(r.Department, c.Department));
-        if (!string.IsNullOrWhiteSpace(c.Group)) rules.Add(r => Contains(r.Group, c.Group));
-        if (!string.IsNullOrWhiteSpace(c.Discipline)) rules.Add(r => Contains(r.Discipline, c.Discipline));
         if (c.Semester.HasValue) rules.Add(r => r.Semester == c.Semester);
         if (c.MinScore.HasValue) rules.Add(r => r.Score >= c.MinScore);
         if (c.MaxScore.HasValue) rules.Add(r => r.Score <= c.MaxScore);
+        static bool Contains(string text, string value) => text.Contains(value, StringComparison.OrdinalIgnoreCase);
+        var faculty = c.Faculty.Trim();
+        var department = c.Department.Trim();
+        var group = c.Group.Trim();
+        var discipline = c.Discipline.Trim();
+        if (faculty.Length > 0) rules.Add(r => Contains(r.Faculty, faculty));
+        if (department.Length > 0) rules.Add(r => Contains(r.Department, department));
+        if (group.Length > 0) rules.Add(r => Contains(r.Group, group));
+        if (discipline.Length > 0) rules.Add(r => Contains(r.Discipline, discipline));
         foreach (var word in c.Keywords.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries))
-            rules.Add(r => Contains(string.Join(" ", r.FullName, r.Faculty, r.Department, r.Group, r.Discipline, r.Teacher), word));
+            rules.Add(r => Contains(r.FullName, word) || Contains(r.Faculty, word)
+                || Contains(r.Department, word) || Contains(r.Group, word)
+                || Contains(r.Discipline, word) || Contains(r.Teacher, word));
         // Запит динамічно складається лише з активних умов. Усі умови поєднано AND.
-        return r => rules.All(rule => rule(r));
+        return r =>
+        {
+            foreach (var rule in rules)
+                if (!rule(r)) return false;
+            return true;
+        };
     }
 }
