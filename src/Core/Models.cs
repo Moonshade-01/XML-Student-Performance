@@ -6,8 +6,7 @@ namespace StudentPerformance.Core;
 public sealed record GradeRecord(string Id, string FullName, string Faculty,
     string Department, string Group, string Discipline, int Semester, int Score, string Teacher = "")
 {
-    public string Ects => Score >= 90 ? "A" : Score >= 82 ? "B" : Score >= 75 ? "C"
-        : Score >= 64 ? "D" : Score >= 60 ? "E" : Score >= 35 ? "FX" : "F";
+    public string Grade => Score >= 90 ? "5" : Score >= 75 ? "4" : Score >= 60 ? "3" : "—";
 
     public static readonly string[] Fields = ["FullName", "Faculty", "Department", "Group", "Discipline", "Semester", "Score", "Teacher"];
 

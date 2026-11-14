@@ -56,7 +56,7 @@
        <Label Text="{Binding FullName}" FontSize="17" FontAttributes="Bold"/>
        <HorizontalStackLayout Grid.Column="1" Grid.RowSpan="2" Spacing="8" VerticalOptions="Center">
         <Label Text="{Binding Score}" FontSize="26" FontAttributes="Bold" TextColor="{StaticResource Accent}"/>
-        <Label Text="{Binding Ects}" FontSize="16" TextColor="{StaticResource Muted}" VerticalOptions="Center"/>
+        <Label Text="{Binding Grade, StringFormat='Оцінка: {0}'}" FontSize="16" TextColor="{StaticResource Muted}" VerticalOptions="Center"/>
        </HorizontalStackLayout>
        <HorizontalStackLayout Grid.Row="1" Spacing="12"><Label Text="{Binding Discipline}" TextColor="{StaticResource Accent}"/><Label Text="{Binding Group}" TextColor="{StaticResource Muted}"/><Label Text="{Binding Semester, StringFormat='Семестр {0}'}" TextColor="{StaticResource Muted}"/></HorizontalStackLayout>
        <Label Grid.Row="2" Grid.ColumnSpan="2" TextColor="{StaticResource Muted}" FontSize="12"><Label.FormattedText><FormattedString><Span Text="{Binding Faculty}"/><Span Text=" · "/><Span Text="{Binding Department}"/></FormattedString></Label.FormattedText></Label>

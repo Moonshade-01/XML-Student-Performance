@@ -33,7 +33,7 @@ The application starts with an empty result list. Click **Відкрити XML**
 ## Project structure
 
 - `Student-Performance.csproj`: the MAUI project.
-- `Examples/Student-Performance.xml`: 96 grade records, 32 students, 8 groups, 3 faculties, 4 departments, 12 disciplines and 12 teachers. All personal data is fictional.
+- `Examples/Student-Performance.xml`: 45 grade records, 15 students, 8 groups, 3 faculties, 4 departments, 12 disciplines and 12 teachers. Students with any score below 60 have been removed from this sample. All personal data is fictional.
 - `src/Core/`: models, query construction, XML strategies and services.
 - `src/Platforms/Windows/`: Windows startup, manifest and file dialogs.
 - `src/Resources/Student-Performance.xsl`: embedded HTML transformation stylesheet.
@@ -65,7 +65,7 @@ The interface is in Ukrainian.
 4. Use **Скинути фільтри** to display all records again. The filter panel can be scrolled on smaller windows.
 5. Use **Зберегти XML** to save the current selection, or **Експорт HTML** to transform it using the supplied stylesheet.
 
-The ECTS mapping is A: 90–100, B: 82–89, C: 75–81, D: 64–74, E: 60–63, FX: 35–59, F: 0–34.
+The grade mapping is 3: 60–74, 4: 75–89, 5: 90–100. Scores below 60 are absent from the sample. Imported files may still contain scores from 0–59; these display a dash instead of a grade. The same mapping is used in the application and HTML export. XML retains the original numeric score.
 
 ## Google Drive
 

@@ -7,17 +7,17 @@
     </head><body><h1>Успішність студентів</h1>
       <p>Варіант 6. Результати аналізу XML-документа.</p>
       <table><caption>Кількість записів: <xsl:value-of select="count(record)"/></caption>
-        <thead><tr><th>П.І.П.</th><th>Факультет</th><th>Кафедра</th><th>Група</th><th>Дисципліна</th><th>Викладач</th><th>Семестр</th><th>Бал</th><th>ECTS</th></tr></thead>
+        <thead><tr><th>П.І.П.</th><th>Факультет</th><th>Кафедра</th><th>Група</th><th>Дисципліна</th><th>Викладач</th><th>Семестр</th><th>Бал</th><th>Оцінка</th></tr></thead>
         <tbody><xsl:for-each select="record"><xsl:sort select="FullName"/>
           <tr><xsl:if test="Score &lt; 60"><xsl:attribute name="class">failed</xsl:attribute></xsl:if>
             <td><xsl:value-of select="FullName"/></td><td><xsl:value-of select="Faculty"/></td>
             <td><xsl:value-of select="Department"/></td><td><xsl:value-of select="Group"/></td>
             <td><xsl:value-of select="Discipline"/></td><td><xsl:value-of select="Teacher"/></td><td><xsl:value-of select="Semester"/></td>
             <td><xsl:value-of select="Score"/></td><td><xsl:choose>
-              <xsl:when test="Score &gt;= 90">A</xsl:when><xsl:when test="Score &gt;= 82">B</xsl:when>
-              <xsl:when test="Score &gt;= 75">C</xsl:when><xsl:when test="Score &gt;= 64">D</xsl:when>
-              <xsl:when test="Score &gt;= 60">E</xsl:when><xsl:when test="Score &gt;= 35">FX</xsl:when>
-              <xsl:otherwise>F</xsl:otherwise></xsl:choose></td>
+              <xsl:when test="Score &gt;= 90">5</xsl:when>
+              <xsl:when test="Score &gt;= 75">4</xsl:when>
+              <xsl:when test="Score &gt;= 60">3</xsl:when>
+              <xsl:otherwise>—</xsl:otherwise></xsl:choose></td>
           </tr></xsl:for-each></tbody>
       </table><xsl:if test="not(record)"><p>За обраними умовами записів не знайдено.</p></xsl:if>
     </body></html>
