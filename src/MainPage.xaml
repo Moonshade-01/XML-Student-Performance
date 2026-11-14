@@ -12,6 +12,7 @@
     <Button Text="Відкрити XML" Command="{Binding OpenCommand}"/>
     <Button Text="Зберегти XML" Command="{Binding SaveCommand}"/>
     <Button Text="Експорт HTML" Command="{Binding ExportCommand}"/>
+    <Button Text="Google Drive" Clicked="OnGoogleDriveClicked"/>
    </HorizontalStackLayout>
   </Grid>
   <Border Grid.Row="1" Grid.RowSpan="2" BackgroundColor="{StaticResource Surface}" Stroke="#303C50" StrokeShape="RoundRectangle 12" Padding="18">

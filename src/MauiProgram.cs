@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using StudentPerformance.Core;
+using StudentPerformance.Cloud;
 
 namespace StudentPerformance;
 
@@ -12,6 +13,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<XmlFileStore>();
         builder.Services.AddSingleton<HtmlTransformService>();
         builder.Services.AddSingleton<PerformanceService>();
+        builder.Services.AddSingleton<GoogleDriveAuth>();
+        builder.Services.AddSingleton<GoogleDriveClient>();
         builder.Services.AddSingleton<IDocumentPicker, WindowsDocumentPicker>();
         builder.Services.AddSingleton<PerformanceViewModel>();
         builder.Services.AddSingleton<MainPage>();

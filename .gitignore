@@ -3,3 +3,6 @@
 .vs/
 *.user
 *.suo
+client_secret*.json
+credentials.json
+token*.json

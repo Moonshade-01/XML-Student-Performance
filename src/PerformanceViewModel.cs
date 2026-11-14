@@ -8,6 +8,7 @@ public sealed class PerformanceViewModel : INotifyPropertyChanged
 {
     private readonly PerformanceService service;
     private readonly IDocumentPicker picker;
+    private string? cloudSource;
     private string source = "", xslPath = "";
     private bool initialized, busy;
     private IReadOnlyList<GradeRecord> rows = [];
@@ -92,8 +93,23 @@ public sealed class PerformanceViewModel : INotifyPropertyChanged
     {
         var file = await picker.OpenAsync(".xml"); if (file is null) return;
         var previous = source; source = file;
+        try { await Search(); Changed(nameof(Source)); ClearCloudSource(); }
+        catch { source = previous; throw; }
+    }
+    public async Task OpenCloudXmlAsync(string path)
+    {
+        var previous = source; source = path;
         try { await Search(); Changed(nameof(Source)); }
         catch { source = previous; throw; }
+        ClearCloudSource(); cloudSource = path;
+    }
+    private void ClearCloudSource()
+    {
+        if (cloudSource is not null)
+        {
+            try { File.Delete(cloudSource); } catch (IOException) { } catch (UnauthorizedAccessException) { }
+            cloudSource = null;
+        }
     }
     private async Task Save()
     {
