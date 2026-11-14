@@ -1,6 +1,6 @@
 # Student-Performance
 
-**OOP — Laboratory Work 2, Variant 6: Student Performance.**
+**Object-Oriented Programming — Laboratory Work 2, Variant 6: Student Performance.**
 
 A C# / .NET MAUI desktop application for Windows with a dark interface. It searches student performance records in XML and exports the selected records to XML or HTML using an XSL stylesheet.
 
@@ -28,35 +28,19 @@ dotnet restore Student-Performance.csproj
 dotnet build Student-Performance.csproj -t:Run
 ```
 
-The sample XML loads automatically. The application reads its default XML and XSL files from the `Examples` directory beside the built application. Both files are copied there automatically during build and publish. Keep this directory when distributing the application.
+The application starts with an empty result list. Click **Відкрити XML** to load your own XML document. No sample student data is included. The HTML stylesheet is embedded in the application.
 
 ## Project structure
 
-```text
-Student-Performance/
-├── Student-Performance.csproj      # Single MAUI project
-├── README.md
-├── global.json            # .NET 10 SDK selection
-├── .gitignore
-├── Examples/
-│   ├── Student-Performance.xml    # Sample student records
-│   └── Student-Performance.xsl    # HTML transformation stylesheet
-├── src/
-│   ├── App.xaml[.cs]     # Application and dark theme
-│   ├── MauiProgram.cs    # Startup and dependency injection
-│   ├── MainPage.xaml[.cs]
-│   ├── PerformanceViewModel.cs
-│   ├── AsyncCommand.cs
-│   ├── IDocumentPicker.cs
-│   └── Core/
-│       ├── Models.cs
-│       ├── Strategies.cs
-│       └── Services.cs
-└── Platforms/
-    └── Windows/          # Required Windows startup and file dialogs
-```
+- `Student-Performance.csproj`: the MAUI project.
+- `src/Core/`: models, query construction, XML strategies and services.
+- `src/Platforms/Windows/`: Windows startup, manifest and file dialogs.
+- `src/Resources/Student-Performance.xsl`: embedded HTML transformation stylesheet.
+- `src/`: XAML interface, dark theme, ViewModel and commands.
 
-The export contains the application source and its examples. Reports, verification logs, separate test projects and generated build files are kept outside this runtime project. Standard framework filenames such as `App.xaml`, `app.manifest`, `README.md` and `global.json` retain their conventional names. The project, application, executable and sample files use the **Student-Performance** name. C# namespaces use `StudentPerformance` because a hyphen cannot be used in a namespace.
+## XML format
+
+Use a `performance` root without a namespace and direct `record` children with unique `id` attributes. Each record requires nonempty `FullName`, `Faculty`, `Department`, `Group`, `Discipline`, `Semester` and `Score` elements. One record describes one student's result in one discipline. Scores must be 0–100 and semesters 1–12.
 
 ## Features
 
@@ -64,7 +48,7 @@ The export contains the application source and its examples. Reports, verificati
 - The Strategy pattern for switching the XML analysis algorithm.
 - Dynamic combinations of keyword, faculty, department, group, discipline, semester and score filters.
 - XML export of the current selection.
-- XSLT-based HTML export using `Examples/Student-Performance.xsl`.
+- XSLT-based HTML export using the embedded XSL stylesheet.
 - A dark MAUI interface with MVVM, record count and the average score of the current selection.
 
 The streaming implementation is labelled SAX to follow the supplied laboratory materials. Technically, `XmlReader` uses a pull model, while classic SAX uses a push/event model.
@@ -73,13 +57,13 @@ The streaming implementation is labelled SAX to follow the supplied laboratory m
 
 The interface is in Ukrainian.
 
-1. Use **Відкрити XML** to open another XML file with the sample structure.
+1. Use **Відкрити XML** to open your XML file using the format described above.
 2. Select an analysis strategy and enter any combination of filters.
 3. Click **Знайти** to apply the query. Empty fields do not restrict the results. All active conditions are combined with AND. Text matching ignores case; each keyword must occur in a text field of the record.
 4. Use **Скинути фільтри** to display all records again. The filter panel can be scrolled on smaller windows.
 5. Use **Зберегти XML** to save the current selection, or **Експорт HTML** to transform it using the supplied stylesheet.
 
-The sample contains 12 fictional grade records for six students. Each record describes one student's result in one discipline. Scores must be between 0 and 100; semesters must be between 1 and 12. Record IDs must be unique. The sample ECTS mapping is A: 90–100, B: 82–89, C: 75–81, D: 64–74, E: 60–63, FX: 35–59, F: 0–34.
+The ECTS mapping is A: 90–100, B: 82–89, C: 75–81, D: 64–74, E: 60–63, FX: 35–59, F: 0–34.
 
 ## Google Drive
 

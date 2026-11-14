@@ -6,6 +6,7 @@
     <AssemblyName>Student-Performance</AssemblyName>
     <UseMaui>true</UseMaui>
     <SingleProject>true</SingleProject>
+    <PlatformsProjectFolder>src\Platforms\</PlatformsProjectFolder>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <ApplicationTitle>Student-Performance</ApplicationTitle>
@@ -18,6 +19,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.110" />
-    <Content Include="Examples/**/*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <MauiAsset Include="src/Resources/Student-Performance.xsl" LogicalName="Student-Performance.xsl" />
   </ItemGroup>
 </Project>

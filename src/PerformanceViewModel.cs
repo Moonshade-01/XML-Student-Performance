@@ -11,7 +11,7 @@ public sealed class PerformanceViewModel : INotifyPropertyChanged
     private string source = "", xslPath = "";
     private bool initialized, busy;
     private IReadOnlyList<GradeRecord> rows = [];
-    private string status = "Відкрийте XML або скористайтеся навчальним прикладом.", error = "";
+    private string status = "Відкрийте XML, щоб завантажити дані.", error = "";
     private IXmlAnalysisStrategy selected;
     public event PropertyChangedEventHandler? PropertyChanged;
     private void Changed([CallerMemberName] string? name = null) => PropertyChanged?.Invoke(this, new(name));
@@ -61,13 +61,11 @@ public sealed class PerformanceViewModel : INotifyPropertyChanged
     {
         if (initialized) return;
         await Run(async () => {
-            // Приклади читаються безпосередньо з Examples поруч із застосунком.
-            var examples = Path.Combine(AppContext.BaseDirectory, "Examples");
-            source = Path.Combine(examples, "Student-Performance.xml");
-            xslPath = Path.Combine(examples, "Student-Performance.xsl");
-            if (!File.Exists(source) || !File.Exists(xslPath))
-                throw new FileNotFoundException("Папка Examples повинна містити Student-Performance.xml та Student-Performance.xsl.");
-            initialized = true; Changed(nameof(Source)); await Search();
+            xslPath = Path.Combine(FileSystem.CacheDirectory, "Student-Performance.xsl");
+            using (var input = await FileSystem.OpenAppPackageFileAsync("Student-Performance.xsl"))
+            using (var output = File.Create(xslPath))
+                await input.CopyToAsync(output);
+            initialized = true;
         });
     }
     private async Task Run(Func<Task> action)
@@ -80,6 +78,11 @@ public sealed class PerformanceViewModel : INotifyPropertyChanged
     private static int? Number(string value) => string.IsNullOrWhiteSpace(value) ? null : int.Parse(value);
     private async Task Search()
     {
+        if (string.IsNullOrEmpty(source))
+        {
+            Status = "Відкрийте XML, щоб завантажити дані.";
+            return;
+        }
         var criteria = new SearchCriteria(Keywords, Faculty, Department, Group, Discipline, Number(Semester), Number(MinScore), Number(MaxScore));
         service.Strategy = SelectedStrategy;
         Rows = await Task.Run(() => service.Search(source, criteria));
@@ -99,7 +102,7 @@ public sealed class PerformanceViewModel : INotifyPropertyChanged
     }
     private async Task Export()
     {
-        // XSL-шаблон постачається як окремий файл Examples/Student-Performance.xsl.
+        // XSL-шаблон завантажено з вбудованих ресурсів застосунку.
         var file = await picker.SaveAsync(".html", "Student-Performance"); if (file is null) return;
         var temporary = Path.Combine(FileSystem.CacheDirectory, Guid.NewGuid() + ".xml");
         try { await Task.Run(() => { service.Save(temporary, Rows); service.ExportHtml(temporary, xslPath, file); }); }
