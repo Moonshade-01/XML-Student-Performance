@@ -5,15 +5,16 @@
  x:Class="StudentPerformance.MainPage" x:DataType="local:PerformanceViewModel"
  BackgroundColor="{StaticResource Background}" Title="Student-Performance">
  <Grid Padding="28,24" RowDefinitions="Auto,Auto,*,Auto" RowSpacing="20" ColumnDefinitions="280,*" ColumnSpacing="24">
-  <Grid Grid.ColumnSpan="2" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" RowSpacing="6">
+  <Grid Grid.ColumnSpan="2" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto" RowSpacing="6">
    <Label Text="Student-Performance" FontSize="30" FontAttributes="Bold"/>
    <Label Grid.Row="1" Text="Успішність студентів · Лабораторна №2 · Варіант 6" TextColor="{StaticResource Muted}"/>
-   <HorizontalStackLayout Grid.Column="1" Grid.RowSpan="2" Spacing="10" VerticalOptions="Center">
+   <FlexLayout Grid.Row="2" Grid.ColumnSpan="2" Wrap="Wrap" JustifyContent="Start" Margin="0,8,0,0">
     <Button Text="Відкрити XML" Command="{Binding OpenCommand}"/>
     <Button Text="Зберегти XML" Command="{Binding SaveCommand}"/>
     <Button Text="Експорт HTML" Command="{Binding ExportCommand}"/>
     <Button Text="Google Drive" Clicked="OnGoogleDriveClicked"/>
-   </HorizontalStackLayout>
+    <Button Text="Логи" Clicked="OnLogsClicked"/>
+   </FlexLayout>
   </Grid>
   <Border Grid.Row="1" Grid.RowSpan="2" BackgroundColor="{StaticResource Surface}" Stroke="#303C50" StrokeShape="RoundRectangle 12" Padding="18">
    <ScrollView><VerticalStackLayout Spacing="3">

@@ -56,6 +56,10 @@ classDiagram
     MainPage --> GoogleDrivePage
     PerformanceViewModel --> PerformanceService
     PerformanceViewModel --> IDocumentPicker
+    PerformanceViewModel --> AppLogger
+    MainPage --> LogsPage
+    LogsPage --> AppLogger
+    GoogleDrivePage --> AppLogger
     IDocumentPicker <|.. WindowsDocumentPicker
     PerformanceService --> QueryBuilder
     PerformanceService --> XmlFileStore
@@ -130,7 +134,20 @@ The interface is in Ukrainian.
 
 The grade mapping is 3: 60–74, 4: 75–89, 5: 90–100. Scores below 60 are absent from the sample. Imported files may still contain scores from 0–59; these display a dash instead of a grade. The same mapping is used in the application and HTML export. XML retains the original numeric score.
 
+## Event journal
+
+Click **Логи** to view the latest 500 events, filter by **Зміни** (Change), **Перехід** (Navigation), or **Помилка** (Error), refresh the list, or save the displayed selection as text. Newer events appear first.
+
+`src/Logging/AppLogger.cs` implements Singleton using a private constructor and a thread-safe `Lazy<AppLogger>` instance. DI registers that same instance for the ViewModel, cloud page and log viewer. Each event includes its timestamp with UTC offset, level and message. The journal covers initialization, XML opening and search, filter reset, XML/HTML saves, cloud listing/download/upload, navigation and errors.
+
+Events persist at `%LOCALAPPDATA%/Student-Performance/Logs/application.log`, outside the repository. At approximately 2 MB the current file rotates into `application.log.previous`; one previous file is retained. If disk access fails, recent session events remain available in memory and the viewer shows a storage warning. The text export follows the selected level and the 500-event display limit.
+
+Logs contain operation names, counts and exception types. They do not include search text, student data, filenames, OAuth JSON, access/refresh tokens or raw exception messages. This avoids leaking credentials or document contents through error details. Application messages remain Ukrainian; source-code comments are English.
+
+Logger verification on 18 November 2026 passed 13 checks, including persistence, all levels, filtering, parallel writes, rotation, malformed lines and in-memory fallback. The updated MAUI project builds with zero warnings and errors.
+
 ## Google Drive
+
 
 The **Google Drive** button opens a dedicated page. Google Drive for desktop is not required. The integration uses Drive REST API v3 and desktop OAuth with a system browser, PKCE, a random state and a loopback redirect. There are no additional NuGet dependencies.
 
@@ -158,3 +175,4 @@ See Google's [desktop OAuth documentation](https://developers.google.com/identit
 Client configuration and refresh tokens are stored with MAUI SecureStorage, and access tokens are held in memory. Do not commit OAuth JSON or token files. The default downloaded filenames are excluded by `.gitignore`; keep files with other names outside the repository too. Never paste the JSON contents into the README or source code.
 
 Real account sign-in and cloud operations require your own OAuth client and network access. Automated HTTP checks do not replace this final account test. The integration targets ordinary XML files in My Drive; Google Docs/Sheets conversion and Shared Drive administration are outside this version.
+- Persistent event journal with a Singleton logger, Change/Navigation/Error levels, timestamps, filtering and text export through the **Логи** button.

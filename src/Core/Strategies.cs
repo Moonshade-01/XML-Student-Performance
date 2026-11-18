@@ -67,8 +67,8 @@ public static class XmlInput
     }
 }
 
-// Потокове читання без DOM/XDocument. У методичці цей підхід названо SAX.
-// XmlReader реалізує pull-модель, тоді як класичний SAX використовує події (push).
+// Stream XML without creating a DOM/XDocument tree; the lab calls this SAX.
+// XmlReader uses a pull model, whereas classic SAX uses push events.
 public sealed class SaxAnalysisStrategy : IXmlAnalysisStrategy
 {
     public string Name => "SAX / XmlReader";

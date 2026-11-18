@@ -2,7 +2,7 @@ using Windows.Storage.Pickers;
 
 namespace StudentPerformance;
 
-// Системні діалоги підтримують локальні шляхи й змонтовану папку Google Drive.
+// Native dialogs support local paths and mounted Google Drive folders.
 public sealed class WindowsDocumentPicker : IDocumentPicker
 {
     private static nint WindowHandle()

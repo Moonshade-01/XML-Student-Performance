@@ -1,4 +1,5 @@
 using StudentPerformance.Core;
+using StudentPerformance.Logging;
 
 namespace StudentPerformance.Cloud;
 
@@ -8,6 +9,7 @@ public sealed class GoogleDrivePage : ContentPage
     private readonly GoogleDriveAuth auth;
     private readonly GoogleDriveClient drive;
     private readonly PerformanceService service;
+    private readonly AppLogger logger;
     private readonly Func<IReadOnlyList<GradeRecord>> getRows;
     private readonly Label selection = new();
     private readonly Func<string, Task> openXml;
@@ -19,9 +21,10 @@ public sealed class GoogleDrivePage : ContentPage
     private CancellationTokenSource? operation;
 
     public GoogleDrivePage(GoogleDriveAuth auth, GoogleDriveClient drive, PerformanceService service,
-        Func<IReadOnlyList<GradeRecord>> getRows, Func<string, Task> openXml)
+        Func<IReadOnlyList<GradeRecord>> getRows, Func<string, Task> openXml, AppLogger logger)
     {
         this.auth = auth; this.drive = drive; this.service = service;
+        this.logger = logger;
         this.getRows = getRows; this.openXml = openXml;
         Title = "Google Drive"; BackgroundColor = Color.FromArgb("10141D");
         var layout = new VerticalStackLayout { Padding = 28, Spacing = 14, MaximumWidthRequest = 850, HorizontalOptions = LayoutOptions.Fill };
@@ -42,7 +45,7 @@ public sealed class GoogleDrivePage : ContentPage
         var cancel = new Button { Text = "Скасувати операцію" };
         cancel.Clicked += (_, _) => operation?.Cancel(); layout.Add(cancel);
         var close = new Button { Text = "Назад" };
-        close.Clicked += async (_, _) => { operation?.Cancel(); await Navigation.PopModalAsync(); };
+        close.Clicked += async (_, _) => { operation?.Cancel(); logger.Navigation("Google Drive page closed."); await Navigation.PopModalAsync(); };
         layout.Add(close);
         Content = new ScrollView { Content = layout };
     }
@@ -61,8 +64,8 @@ public sealed class GoogleDrivePage : ContentPage
         files.IsEnabled = filename.IsEnabled = false;
         progress.IsRunning = true; message.Text = "Виконується… Якщо відкрився браузер, завершіть вхід Google.";
         try { await action(cancellation.Token); }
-        catch (OperationCanceledException) { message.Text = "Операцію скасовано або час очікування входу минув. Можна спробувати знову."; }
-        catch (Exception ex) { message.Text = ex.Message; }
+        catch (OperationCanceledException) { logger.Navigation("Google Drive operation canceled or timed out."); message.Text = "Операцію скасовано або час очікування входу минув. Можна спробувати знову."; }
+        catch (Exception ex) { logger.Error("Google Drive operation failed", ex); message.Text = ex.Message; }
         finally
         {
             operation = null; progress.IsRunning = false;
@@ -78,6 +81,7 @@ public sealed class GoogleDrivePage : ContentPage
         using var stream = await selected.OpenReadAsync();
         using var reader = new StreamReader(stream);
         await auth.ImportClientAsync(await reader.ReadToEndAsync(token));
+        logger.Change("Desktop OAuth configuration imported.");
         files.ItemsSource = null;
         message.Text = "Налаштування імпортовано локально. Натисніть «Увійти / оновити список».";
     }
@@ -85,6 +89,7 @@ public sealed class GoogleDrivePage : ContentPage
     private async Task Refresh(CancellationToken token)
     {
         var found = await drive.ListXmlAsync(token);
+        logger.Navigation($"Google Drive XML list refreshed. Files: {found.Count}.");
         files.ItemsSource = found.ToList(); files.SelectedIndex = found.Count > 0 ? 0 : -1;
         message.Text = found.Count == 0 ? "XML-файлів не знайдено. Можна зберегти поточну вибірку або додати XML через сайт Google Drive й оновити список."
             : $"XML-файлів: {found.Count}. Оберіть файл зі списку.";
@@ -98,6 +103,7 @@ public sealed class GoogleDrivePage : ContentPage
         catch { if (File.Exists(temporary)) File.Delete(temporary); throw; }
         message.Text = $"Відкрито: {file.Name}. Поверніться до результатів кнопкою «Назад».";
         UpdateSelection();
+        logger.Navigation("XML downloaded from Google Drive.");
     }
 
     private async Task Upload(CancellationToken token)
@@ -116,11 +122,13 @@ public sealed class GoogleDrivePage : ContentPage
         }
         finally { if (File.Exists(temporary)) File.Delete(temporary); }
         message.Text = $"Створено у Google Drive: {name}. Оновіть список, щоб відкрити новий файл.";
+        logger.Change($"New XML uploaded to Google Drive. Records: {rows.Length}.");
     }
 
     private async Task SignOut(CancellationToken token)
     {
         await auth.SignOutAsync(); files.ItemsSource = null;
+        logger.Navigation("Google Drive local session cleared.");
         message.Text = "Локальну сесію видалено. Щоб відкликати доступ застосунку, використайте налаштування Google-акаунта.";
     }
 

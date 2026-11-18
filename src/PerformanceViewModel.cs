@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using StudentPerformance.Core;
+using StudentPerformance.Logging;
 
 namespace StudentPerformance;
 
@@ -8,6 +9,7 @@ public sealed class PerformanceViewModel : INotifyPropertyChanged
 {
     private readonly PerformanceService service;
     private readonly IDocumentPicker picker;
+    private readonly AppLogger logger;
     private string? cloudSource;
     private string source = "", xslPath = "";
     private bool initialized, busy;
@@ -47,15 +49,17 @@ public sealed class PerformanceViewModel : INotifyPropertyChanged
     public AsyncCommand ResetCommand { get; }
     private readonly List<AsyncCommand> commands = [];
 
-    public PerformanceViewModel(PerformanceService service, IDocumentPicker picker)
+    public PerformanceViewModel(PerformanceService service, IDocumentPicker picker, AppLogger logger)
     {
         this.service = service; this.picker = picker; selected = Strategies[0];
+        this.logger = logger;
         AsyncCommand Make(Func<Task> action) { var c = new AsyncCommand(() => Run(action), () => !IsBusy && initialized); commands.Add(c); return c; }
         SearchCommand = Make(Search); OpenCommand = Make(Open); SaveCommand = Make(Save); ExportCommand = Make(Export);
         ResetCommand = Make(async () => {
             Keywords = Faculty = Department = Group = Discipline = Semester = MinScore = MaxScore = "";
             foreach (var key in new[] { nameof(Keywords), nameof(Faculty), nameof(Department), nameof(Group), nameof(Discipline), nameof(Semester), nameof(MinScore), nameof(MaxScore) }) Changed(key);
             await Search();
+            logger.Navigation("Search filters reset.");
         });
     }
     public async Task InitializeAsync()
@@ -67,13 +71,14 @@ public sealed class PerformanceViewModel : INotifyPropertyChanged
             using (var output = File.Create(xslPath))
                 await input.CopyToAsync(output);
             initialized = true;
+            logger.Navigation("Application initialized.");
         });
     }
     private async Task Run(Func<Task> action)
     {
         IsBusy = true; Error = "";
         try { await action(); }
-        catch (Exception ex) { Error = "Не вдалося виконати дію: " + ex.Message; }
+        catch (Exception ex) { logger.Error("Application operation failed", ex); Error = "Не вдалося виконати дію: " + ex.Message; }
         finally { IsBusy = false; }
     }
     private static int? Number(string value) => string.IsNullOrWhiteSpace(value) ? null : int.Parse(value);
@@ -89,12 +94,13 @@ public sealed class PerformanceViewModel : INotifyPropertyChanged
         service.Strategy = strategy;
         Rows = await Task.Run(() => service.Search(source, criteria));
         Status = $"{strategy.Name} • {ResultCount} у вибірці";
+        logger.Navigation($"XML search completed. Strategy: {strategy.Name}; records: {Rows.Count}.");
     }
     private async Task Open()
     {
         var file = await picker.OpenAsync(".xml"); if (file is null) return;
         var previous = source; source = file;
-        try { await Search(); Changed(nameof(Source)); ClearCloudSource(); }
+        try { await Search(); Changed(nameof(Source)); ClearCloudSource(); logger.Navigation("Local XML opened."); }
         catch { source = previous; throw; }
     }
     public async Task OpenCloudXmlAsync(string path)
@@ -103,6 +109,7 @@ public sealed class PerformanceViewModel : INotifyPropertyChanged
         try { await Search(); Changed(nameof(Source)); }
         catch { source = previous; throw; }
         ClearCloudSource(); cloudSource = path;
+        logger.Navigation("Cloud XML opened for analysis.");
     }
     private void ClearCloudSource()
     {
@@ -116,14 +123,16 @@ public sealed class PerformanceViewModel : INotifyPropertyChanged
     {
         var file = await picker.SaveAsync(".xml", "Student-Performance-results"); if (file is null) return;
         await Task.Run(() => service.Save(file, Rows)); Status = $"XML збережено: {file}";
+        logger.Change($"XML saved. Records: {Rows.Count}.");
     }
     private async Task Export()
     {
-        // XSL-шаблон завантажено з вбудованих ресурсів застосунку.
+        // The XSL stylesheet was loaded from the embedded application resources.
         var file = await picker.SaveAsync(".html", "Student-Performance"); if (file is null) return;
         var temporary = Path.Combine(FileSystem.CacheDirectory, Guid.NewGuid() + ".xml");
         try { await Task.Run(() => { service.Save(temporary, Rows); service.ExportHtml(temporary, xslPath, file); }); }
         finally { if (File.Exists(temporary)) File.Delete(temporary); }
         Status = $"HTML збережено: {file}";
+        logger.Change($"HTML exported. Records: {Rows.Count}.");
     }
 }

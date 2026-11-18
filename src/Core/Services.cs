@@ -6,7 +6,7 @@ namespace StudentPerformance.Core;
 
 public sealed class XmlFileStore
 {
-    // Google Drive for desktop надає синхронізований шлях як звичайний файл.
+    // Serialize the current selection, regardless of its local or cloud origin.
     public void Save(string path, IEnumerable<GradeRecord> rows)
     {
         var document = new XDocument(new XDeclaration("1.0", "utf-8", null),
@@ -32,7 +32,7 @@ public sealed class HtmlTransformService
     }
 }
 
-// Контекст Strategy: інтерфейс не залежить від конкретного алгоритму аналізу.
+// Strategy context: delegate analysis to the selected implementation.
 public sealed class PerformanceService(QueryBuilder queries, XmlFileStore store, HtmlTransformService html)
 {
     public IXmlAnalysisStrategy Strategy { get; set; } = new SaxAnalysisStrategy();

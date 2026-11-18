@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using StudentPerformance.Core;
 using StudentPerformance.Cloud;
+using StudentPerformance.Logging;
 
 namespace StudentPerformance;
 
@@ -9,6 +10,7 @@ public static class MauiProgram
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder().UseMauiApp<App>();
+        builder.Services.AddSingleton(AppLogger.Instance);
         builder.Services.AddSingleton<QueryBuilder>();
         builder.Services.AddSingleton<XmlFileStore>();
         builder.Services.AddSingleton<HtmlTransformService>();

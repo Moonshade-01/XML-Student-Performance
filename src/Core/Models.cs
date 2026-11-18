@@ -2,7 +2,7 @@ using System.Globalization;
 
 namespace StudentPerformance.Core;
 
-// Один запис — результат студента з однієї дисципліни.
+// One record represents one student's result in one discipline.
 public sealed record GradeRecord(string Id, string FullName, string Faculty,
     string Department, string Group, string Discipline, int Semester, int Score, string Teacher = "")
 {
@@ -51,7 +51,7 @@ public sealed class QueryBuilder
             rules.Add(r => Contains(r.FullName, word) || Contains(r.Faculty, word)
                 || Contains(r.Department, word) || Contains(r.Group, word)
                 || Contains(r.Discipline, word) || Contains(r.Teacher, word));
-        // Запит динамічно складається лише з активних умов. Усі умови поєднано AND.
+        // Build the query from active conditions and combine them with AND.
         return r =>
         {
             foreach (var rule in rules)
